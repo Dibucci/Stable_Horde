@@ -1,5 +1,5 @@
 {
-    "use_database": true,
+    "use_database": false,
     "default_token": "0000000000",
     "apply_roles_to_worker_owners": [
 
@@ -9,16 +9,16 @@
     ],
     "advanced": {
         "dev": false,
-        "encrypt_token": true,
+        "encrypt_token": false,
         "pre_check_prompts_for_suspicion": {
-            "enabled": false,
+            "enabled": true,
             "timeout_duration": 3600000
         }
     },
     "filter_actions": {
         "mode": "whitelist",
         "guilds": [
-            "1234567890123456789"
+            "1007615132299448392"
         ],
         "apply_filter_to": {
             "react_to_transfer": true,
@@ -44,8 +44,8 @@
         "plain": true,
         "csv": true,
         "log_actions": {
-            "without_source_image": true,
-            "with_source_image": true
+            "non_img2img": true,
+            "img2img": true
         }
     },
     "interrogate": {
@@ -65,38 +65,36 @@
     },
     "advanced_generate": {
         "enabled": true,
-        "require_login": true,
+        "require_login": false,
         "trusted_workers": true,
-        "censor_nsfw": true,
+        "censor_nsfw": false,
         "blacklisted_models": [],
         "blacklisted_words": [],
         "update_generation_status_interval_seconds": 5,
-        "convert_a1111_weight_to_horde_weight": false,
+        "convert_a1111_weight_to_horde_weight": true,
         "improve_loading_time": false,
         "default": {
             "tiling": false,
-            "steps": 30,
+            "steps": 40,
             "resolution": {
-                "width": 512,
-                "height": 512
+                "width": 576,
+                "height": 576
             },
-            "cfg": 7,
-            "amount": 1,
+            "cfg": 11,
+            "amount": 4,
             "sampler": "k_euler",
             "model": "stable_diffusion",
             "denoise": 50,
             "gfpgan": false,
             "real_esrgan": false,
-            "karras": false,
-            "share": false,
-            "keep_original_ratio": true,
-            "style": "raw"
+            "karras": true,
+            "share": true
         },
-        "source_image": {
+        "img2img": {
             "require_login": true,
             "require_stable_horde_account_oauth_connection": false,
             "allow_non_webp": true,
-            "require_nsfw_channel": false,
+            "require_nsfw_channel": true,
             "whitelist": {
                 "only_allow_whitelist": false,
                 "user_ids": [],
@@ -127,8 +125,6 @@
                 "min": 0,
                 "max": 100
             },
-            "allow_negative_prompt": true,
-            "allow_style": true,
             "allow_sampler": true,
             "allow_cfg": true,
             "allow_seed": true,
@@ -141,7 +137,7 @@
             "allow_steps": true,
             "allow_amount": true,
             "allow_models": true,
-            "allow_source_image": true,
+            "allow_img2img": true,
             "allow_denoise": true,
             "allow_nsfw": true,
             "allow_karras": true,
@@ -151,9 +147,9 @@
     },
     "generate": {
         "enabled": true,
-        "require_login": true,
-        "trusted_workers": true,
-        "censor_nsfw": true,
+        "require_login": false,
+        "trusted_workers": false,
+        "censor_nsfw": false,
         "blacklisted_styles": [],
         "blacklisted_words": [],
         "update_generation_status_interval_seconds": 5,
@@ -162,79 +158,41 @@
         "styles_source": "https://raw.githubusercontent.com/db0/Stable-Horde-Styles/main/styles.json",
         "default": {
             "tiling": false,
-            "amount": 1,
-            "share": false,
-            "style": "raw",
-            "keep_original_ratio": true,
-            "denoise": 50
-        },
-        "source_image": {
-            "require_login": true,
-            "require_stable_horde_account_oauth_connection": false,
-            "allow_non_webp": true,
-            "require_nsfw_channel": false,
-            "whitelist": {
-                "only_allow_whitelist": false,
-                "user_ids": [],
-                "bypass_checks": true
-            }
+            "amount": 4,
+            "share": true,
+            "style": "raw"
         },
         "user_restrictions": {
             "amount": {
                 "max": 4
             },
-            "denoise": {
-                "min": 0,
-                "max": 100
-            },
             "allow_negative_prompt": true,
             "allow_style": true,
             "allow_tiling": true,
             "allow_amount": true,
-            "allow_nsfw": false,
+            "allow_nsfw": true,
             "allow_sharing": true,
-            "allow_rating": true,
-            "allow_source_image": true,
-            "allow_denoise": true
+            "allow_rating": true
         }
     },
     "remix": {
         "enabled": true,
-        "require_login": true,
-        "trusted_workers": true,
+        "require_login": false,
+        "trusted_workers": false,
         "blacklisted_words": [],
         "convert_a1111_weight_to_horde_weight": true,
         "allow_custom_strength": true,
         "generation_options": {
             "sampler_name": "k_euler",
-            "model": "pix2pix",
+            "model": "stable_diffusion",
             "width": 512,
             "height": 512,
-            "allow_nsfw": false,
-            "censor_nsfw": true,
-            "share_result": false,
-            "cfg": 7.5,
-            "denoise": 75,
-            "steps": 100
-        }
-    },
-    "party": {
-        "enabled": true,
-        "mention_roles": [
-            "1234567890123456789"
-        ],
-        "default": {
-            "recurring": false
-        },
-        "user_restrictions": {
-            "award": {
-                "min": 1,
-                "max": 1000000
-            },
-            "duration": {
-                "min": 1,
-                "max": 30
-            }
+            "allow_nsfw": true,
+            "censor_nsfw": false,
+            "share_result": true,
+            "cfg": 11,
+            "denoise": 60,
+            "steps": 50
         }
     }
 }
